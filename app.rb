@@ -28,6 +28,8 @@ class Main < Sinatra::Base
     @event_participants.each do |p|
       p.calculateratings
     end
+    
+    @event_participants.sort! { |a, b| b.newratingnumber <=> a.newratingnumber }
     render :rabl, :event
   end
 
