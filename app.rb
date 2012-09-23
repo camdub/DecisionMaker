@@ -22,6 +22,11 @@ class Main < Sinatra::Base
     @event = Event.find(id)
     render :rabl, :event
   end
+
+  get '/participant/:searchhashtag' do |searchhashtag|
+    @participant = Participant.where(:hashtag => searchhashtag)
+    render :rabl, :participant
+  end
   
 end
 
