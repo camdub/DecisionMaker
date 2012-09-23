@@ -1,0 +1,87 @@
+<html>
+	<head>
+		<title>Speaker Feedback</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
+		<link rel="stylesheet" href="css/leaderboard.css" />
+		<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+		<script src="js/knockout-2.1.0.js"></script>
+		<script>
+			function drawStars(count) {
+				var starText = '';
+				
+				// add 'count' number of stars
+				for (i=0.5; i<count; i++)
+					starText += '<img class="star" src="img/star.png" />';
+				
+				// add half stars
+				if ((count * 10) % 10 == 5)
+					starText += '<img class="half-star" src="img/half-star.png" />';
+
+				return starText;
+			}
+			$(window).load(function() {				
+				// Overall viewmodel for this screen, along with initial state
+				function ParticipantViewModel() {
+					var self = this;
+					self.name = "Klaus Randusky";
+					self.hashtag = "#krandusky"
+					self.imagepath = "img/unitednations/kradunsky.jpg";
+					self.organization = "Emission Trading Registry Department, Austrian Federal Environment Agency";
+					self.ratingcount = 7;
+					self.percent = 15;
+					self.rating = 1.5;
+
+					// Non-editable catalog data - would come from the server
+					self.tweets = [
+						{ name: "Barack Obama", twitterhandle: "@BarackObama", timestamp: "3h", rating: 0, imagepath: "http://a0.twimg.com/profile_images/2325704772/wrrmef61i6jl91kwkmzq_normal.png", message: "This guys was terrible.. I'm giving him 0 stars." },
+						{ name: "Lindsay Lohan", twitterhandle: "@lindsaylohan", timestamp: "5h", rating: 5, imagepath: "http://a0.twimg.com/profile_images/1904255837/wallpaper_me_as_elizabeth_taylor_normal.jpg", message: "This speech BLEW MY MIND. I never knew there was so much water in the world! Luckily twitter has a character limit, I'm out of thoughts...." },
+						{ name: "Bill Clinton", twitterhandle: "@W_Clinton", timestamp: "10h", rating: 1, imagepath: "http://a0.twimg.com/profile_images/371500268/304_normal.jpg", message: "Never would've happened while I was President." }
+					];
+				}
+
+				ko.applyBindings(new ParticipantViewModel());
+			});
+		</script>
+	</head>
+	<body>
+		<div data-role="page">
+			<div class="header ui-bar-b">
+				<img data-bind="attr : {src: imagepath}" />
+				<div class="participant-info">
+					<h1 data-bind="text: name"></h1>
+					<p data-bind="text: organization"></p>
+					<p class="hashtag-wrap">
+						<span class="hashtag" data-bind="text: hashtag"></span>
+						<span class="percentage-vote">avg rating</span>
+					</p>
+					<p>
+						<span class="rating-count" data-bind="text: ratingcount + ' reviews'"></span>
+						<span class="percentage-vote" data-bind="html: drawStars(rating)"></span>
+					</p>
+				</div>
+			</div>
+			<div class="tweet-bar ui-bar-c">
+				<img class="twitter-logo" src="img/twitter-bird-light-bgs.png" />
+				<span>recent tweets</span>
+			</div>
+			<div class="content" data-role="content" data-theme="a">	
+				<ul class="participant-list" data-role="listview" data-bind="foreach: tweets">
+					<li class="participant">
+						<a href='leaderboard.html'> <!-- data-bind='click: $parent.update("#jwarner")' -->
+							<img class="twitter-user-image" data-bind="attr : {src: imagepath}" />
+							<div class="twitter-user-info">
+								<h1 data-bind="text: name"></h1>
+								<span class="twitterhandle" data-bind="text: twitterhandle"></span>
+								<span class="timestamp" data-bind="text: timestamp"></span>
+							</div>
+							<p class="twitter-user-message" data-bind="text: message"></p>
+							<p class="percentage-vote" data-bind="html: drawStars(rating)"></p>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>

@@ -13,6 +13,11 @@ class Main < Sinatra::Base
     content_type :json
   end
   
+  get '/' do
+    redirect '/eventlist.html'
+    #send_file File.join(settings.public_folder, 'index.html')
+  end
+  
   get '/events' do
     @events = Event.all
     render :rabl, :events

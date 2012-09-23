@@ -1,0 +1,10 @@
+{
+  "123": { "name": "Bob Yu", "hashtag": "#ayu", "imagepath": "img/pariveda/ayu.jpg", "ratingcount": 390, "percent": 64, "rating": 3.5},
+
+  "456": { "name": "Jack Warner", "hashtag": "#jwarner", "imagepath": "img/pariveda/jwarner.jpg", "ratingcount": 21, "percent": 40, "rating": 2.5 },
+  "789": { "name": "Mina Mistry", "hashtag": "#mmistry", "imagepath": "img/pariveda/mmistry.jpg", "ratingcount": 15, "percent": 32, "rating": 2 },
+"871": { "name": "Cameron Woodmansee", "hashtag": "#cwoodmansee", "imagepath": "img/pariveda/cwoodmansee.jpg", "ratingcount": 7, "percent": 15, "rating": 1.5 },
+"912": { "name": "Michael Steinberg", "hashtag": "#msteinberg", "imagepath": "img/pariveda/msteinberg.jpg", "ratingcount": 5000, "percent": 7, "rating": 1 },
+  "4569": { "name": "Jck Warner", "hashtag": "#jwarnser", "imagepath": "img/pariveda/jwarner.jpg", "ratingcount": 21, "percent": 2, "rating": 0.5 }
+
+}
