@@ -51,7 +51,7 @@
 			<div data-role="content" data-theme="a">	
 				<ul class="participant-list" data-role="listview" data-bind="foreach: participants">
 					<li class="participant">
-						<a data-bind="attr: {href: id}"> <!-- data-bind='click: $par	ent.update("#jwarner")' -->
+						<a data-bind="attr: {href: id}" rel="external"> <!-- data-bind='click: $par	ent.update("#jwarner")' -->
 							<img data-bind="attr : {src: imagepath}" />
 							<h1 data-bind="text: title"></h1>
 							<p data-bind="text: startdate + ' - ' + enddate">
