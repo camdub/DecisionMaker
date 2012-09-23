@@ -1,8 +1,0 @@
-production:
-    sessions:
-        default:
-            hosts:
-                - mongolab.com/home
-            database: decisionmaker
-            username: dm_user
-            password: dm_user

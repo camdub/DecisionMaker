@@ -41,6 +41,9 @@ GEM
     multipart-post (1.1.5)
     plucky (0.5.2)
       mongo (~> 1.5)
+    rabl (0.7.2)
+      activesupport (>= 2.3.14)
+      multi_json (~> 1.0)
     rack (1.4.1)
     rack-protection (1.2.0)
       rack
@@ -69,6 +72,7 @@ PLATFORMS
 DEPENDENCIES
   bson_ext
   mongo_mapper
+  rabl
   shotgun
   sinatra
   tweetstream
