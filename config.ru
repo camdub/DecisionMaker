@@ -1,8 +1,6 @@
-require 'bundler/setup'
-Bundler.require(:default)
+require 'bundler'
+Bundler.require
 
 require File.dirname(__FILE__) + "/app.rb"
 
-map '/' do
-  run App::Main
-end
+run Main
