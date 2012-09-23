@@ -29,7 +29,7 @@ class Main < Sinatra::Base
       p.calculateratings
     end
     
-    @event_participants.sort! { |a, b| b.newratingnumber <=> a.newratingnumber }
+    @event_participants.sort! { |a, b| b.newratingperc <=> a.newratingperc}
     render :rabl, :event
   end
 
