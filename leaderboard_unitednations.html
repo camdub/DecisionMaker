@@ -1,0 +1,99 @@
+<html>
+	<head>
+		<title>Leaderboard</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
+		<link rel="stylesheet" href="css/leaderboard.css" />
+		<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+		<script src="js/knockout-2.1.0.js"></script>
+		<script>
+			function drawStars(count) {
+				var starText = '';
+				
+				// add 'count' number of stars
+				for (i=0.5; i<count; i++)
+					starText += '<img class="star" src="img/star.png" />';
+				
+				// add half stars
+				if ((count * 10) % 10 == 5)
+					starText += '<img class="half-star" src="img/half-star.png" />';
+
+				return starText;
+			}
+			
+			
+			$(window).load(function() {		
+				
+				$.getJSON('data/speakers.json', function(data) {
+				  var items = [];
+				  window.alert("hello");
+				  $.each(data, function(key, val) {
+				    items.push('<li id="' + key + '">' + val + '</li>');
+				  });
+
+				  $('<ul/>', {
+				    'class': 'my-new-list',
+				    html: items.join('')
+				  }).appendTo('body');
+				});
+				
+			
+						
+				// Overall viewmodel for this screen, along with initial state
+				function ParticipantViewModel() {
+					var self = this;
+
+					// Non-editable catalog data - would come from the server
+					self.participants =  ko.observableArray([
+						{ name: "Anthony Yu", hashtag: "#ayu", imagepath: "img/pariveda/ayu.jpg", ratingcount: 390, percent: 64, rating: 3.5},
+						{ name: "Jack Warner", hashtag: "#jwarner", imagepath: "img/pariveda/jwarner.jpg", ratingcount: 21, percent: 40, rating: 2.5 },
+						{ name: "Mina Mistry", hashtag: "#mmistry", imagepath: "img/pariveda/mmistry.jpg", ratingcount: 15, percent: 32, rating: 2 },
+						{ name: "Cameron Woodmansee", hashtag: "#cwoodmansee", imagepath: "img/pariveda/cwoodmansee.jpg", ratingcount: 7, percent: 15, rating: 1.5 },
+						{ name: "Michael Steinberg", hashtag: "#msteinberg", imagepath: "img/pariveda/msteinberg.jpg", ratingcount: 5, percent: 7, rating: 1 },
+						{ name: "Sajen Shrestha", hashtag: "#sshrestha", imagepath: "img/nopic.jpg", ratingcount: 2, percent: 4, rating: .5 },
+						{ name: "Jon Landers", hashtag: "#jlanders", imagepath: "img/nopic.jpg", ratingcount: 1, percent: 0, rating: 0 }
+					]);
+
+					/*
+					self.findParticipant = function(hashtag) {
+							var lists = self.participants;
+							return ko.utils.arrayFirst(lists, function(list) {
+								return list.hashtag === hashtag;
+							});
+						};
+
+					self.update = function (hashtag) {
+						var participant = self.findParticipant(hashtag);
+
+						if (participant != null)
+							participant.ratingcount = 900;
+					};
+					*/
+				}
+
+				ko.applyBindings(new ParticipantViewModel());
+			});
+		</script>
+	</head>
+	<body>
+		<div data-role="page">
+			<div data-role="header" data-theme="b">
+				<h1>Leaderboard</h1>
+			</div>
+			<div data-role="content" data-theme="a">	
+				<ul class="participant-list" data-role="listview" data-bind="foreach: participants">
+					<li class="participant">
+						<a href='#'> <!-- data-bind='click: $parent.update("#jwarner")' -->
+							<img data-bind="attr : {src: imagepath}" />
+							<h1 data-bind="text: name"></h1>
+							<span class="rating-count" data-bind="text: ratingcount + ' reviews'"></span>
+							<span class="percentage-vote" data-bind="html: drawStars(rating)"></span>
+						</a>
+						<div class="percentage-layer" data-bind="style: { width: percent + '%' }"></div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>

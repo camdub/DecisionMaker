@@ -1,0 +1,108 @@
+<html>
+	<head>
+		<title>Leaderboard</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
+		<link rel="stylesheet" href="css/leaderboard.css" />
+		<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+		<script src="js/knockout-2.1.0.js"></script>
+		<script>
+		
+		$.ajaxSetup({
+		async: false
+		});
+		
+			function drawStars(count) {
+				var starText = '';
+				
+				// add 'count' number of stars
+				for (i=0.5; i<count; i++)
+					starText += '<img class="star" src="img/star.png" />';
+				
+				// add half stars
+				if ((count * 10) % 10 == 5)
+					starText += '<img class="half-star" src="img/half-star.png" />';
+
+				return starText;
+			}
+		
+		
+					$(document).ready(function() {		
+		   $(document).bind("mobileinit", function () {
+		        $.mobile.ajaxLinksEnabled = false;
+		        $.mobile.pushStateEnabled = false;
+		  });
+		var partVM = new ParticipantViewModel();
+	ko.applyBindings(partVM);
+	
+			function getUrlVars()
+			{
+			    var vars = [], hash;
+			    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+			    for(var i = 0; i < hashes.length; i++)
+			    {
+			        hash = hashes[i].split('=');
+			        vars.push(hash[0]);
+			        vars[hash[0]] = hash[1];
+			    }
+			    return vars;
+			}
+				function ParticipantViewModel() {
+					var self = this;
+					self.participants = ko.observableArray();
+
+				//	});
+				}
+	
+
+					// Overall viewmodel for this screen, along with initial state
+				
+					//window.alert('apply bindings');
+
+
+		
+			
+			
+			var dbId = getUrlVars()['id'];
+		//var partVM = new ParticipantViewModel();
+		
+
+			$.getJSON('data/' + dbId + '/speakers.json', function(data) {
+				  $.each(data, function(key, val) {
+					//window.alert('populating data');
+					partVM.participants.push({ name: val.name, hashtag: val.hashtag, imagepath: val.imagepath, ratingcount: val.ratingcount, percent: val.percent, rating: val.rating});
+						
+					  });
+		});
+
+		
+			
+		
+			//window.alert('id=' + dbId);
+			
+				});
+			
+		</script>
+	</head>
+	<body>
+		<div data-role="page">
+			<div data-role="header" data-theme="b">
+				<h1>Leaderboard</h1>
+			</div>
+			<div data-role="content" data-theme="a">	
+				<ul class="participant-list" data-role="listview" data-bind="foreach: participants">
+					<li class="participant">
+						<a href='#'> <!-- data-bind='click: $parent.update("#jwarner")' -->
+							<img data-bind="attr : {src: imagepath}" />
+							<h1 data-bind="text: name"></h1>
+							<span class="rating-count" data-bind="text: ratingcount + ' reviews'"></span>
+							<span class="percentage-vote" data-bind="html: drawStars(rating)"></span>
+						</a>
+						<div class="percentage-layer" data-bind="style: { width: percent + '%' }"></div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>
