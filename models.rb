@@ -19,6 +19,7 @@ class Participant
   key :hashtag, String
   key :rating, Integer
   key :ratingcount, Integer
+  key :organization, String
   
   embedded_in :event
   
@@ -51,6 +52,7 @@ class Tweet
   key :feedback, String
   key :rating, Integer
   key :participanthashtag, String
+  key :processed, Integer
 
   def self.parse_rating(mytweet)
 	  nospacetweet = mytweet.gsub(/\s+/, "")
