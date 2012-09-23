@@ -1,6 +1,6 @@
-object @event
-attributes :title, :hashtag
+collection @event_participants, object_root: false
+attributes :_id, :name, :hashtag, :image, :ratingcount, :newratingnumber, :newratingperc
 
-node :participants do
-  @event.participants.map { |p| { id: p._id, name: p.name, hashtag: p.hashtag, rating: p.rating } }
-end
+attribute :newratingnumber => :rating
+attribute :newratingperc => :percent
+attribute :_id => :id

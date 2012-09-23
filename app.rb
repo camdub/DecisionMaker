@@ -18,14 +18,34 @@ class Main < Sinatra::Base
     render :rabl, :events
   end
   
-  get '/event/:id' do |id|
-    @event = Event.find(id)
+  get '/events/:id' do |id|
+    @event_participants = Event.find(id).participants
+    @event_participants.each do |p|
+      p.calculateratings
+    end
     render :rabl, :event
   end
 
-  get '/participant/:searchhashtag' do |searchhashtag|
-    @participant = Participant.where(:hashtag => searchhashtag)
+  get '/participants/:searchhashtag' do |searchhashtag|
+    @event = Event.where("participants.hashtag" => "#{searchhashtag}").first
+    
+    #@participant = []
+    
+    @event.participants.each do |x|
+      if x.hashtag == searchhashtag
+        @participant = x
+      end
+    end
+    
+    @participant.calculateratings
     render :rabl, :participant
+
+    #if @participant != nil
+     # @participant.calculateratings
+    #  render :rabl, :participant
+    #else
+    #  "Not found"
+    #end
   end
   
 end
