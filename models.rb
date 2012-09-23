@@ -20,6 +20,8 @@ class Participant
   key :rating, Integer
   key :ratingcount, Integer
   
+  embedded_in :event
+  
   attr_accessor :newratingnumber
   attr_accessor :newratingperc
 
@@ -45,8 +47,12 @@ end
 
 class Tweet
   include MongoMapper::Document
+  
+  key :feedback, String
+  key :rating, Integer
+  key :participanthashtag, String
 
-  def parseratingfromtweet(mytweet)
+  def self.parse_rating(mytweet)
 	  nospacetweet = mytweet.gsub(/\s+/, "")
   	position = nospacetweet.index /[0-5]star/i
   	if (position != nil)
