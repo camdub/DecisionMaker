@@ -28,61 +28,40 @@
 			}
 		
 		
-					$(document).ready(function() {		
-		   $(document).bind("mobileinit", function () {
-		        $.mobile.ajaxLinksEnabled = false;
-		        $.mobile.pushStateEnabled = false;
-		  });
-		var partVM = new ParticipantViewModel();
-	ko.applyBindings(partVM);
-	
-			function getUrlVars()
-			{
-			    var vars = [], hash;
-			    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-			    for(var i = 0; i < hashes.length; i++)
-			    {
-			        hash = hashes[i].split('=');
-			        vars.push(hash[0]);
-			        vars[hash[0]] = hash[1];
-			    }
-			    return vars;
-			}
-				function ParticipantViewModel() {
-					var self = this;
-					self.participants = ko.observableArray();
-
-				//	});
-				}
-	
-
-					// Overall viewmodel for this screen, along with initial state
-				
-					//window.alert('apply bindings');
-
-
-		
-			
-			
-			var dbId = getUrlVars()['id'];
-		//var partVM = new ParticipantViewModel();
-		
-
-			$.getJSON('/events/' + dbId, function(data) {
-				  $.each(data, function(key, val) {
-					//window.alert('populating data');
-					partVM.participants.push({ name: val.name, hashtag: val.hashtag, imagepath: val.image, ratingcount: val.ratingcount, percent: val.percent, rating: val.rating});
-						
-					  });
+$(document).ready(function() {		
+		$(document).bind("mobileinit", function () {
+			$.mobile.ajaxLinksEnabled = false;
+			$.mobile.pushStateEnabled = false;
 		});
+		var partVM = new ParticipantViewModel();
+		ko.applyBindings(partVM);
+	
+		function getUrlVars()
+		{
+			var vars = [], hash;
+			var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+			for(var i = 0; i < hashes.length; i++)
+			{
+				hash = hashes[i].split('=');
+				vars.push(hash[0]);
+				vars[hash[0]] = hash[1];
+			}
+			return vars;
+		}
 
-		
-			
-		
-			//window.alert('id=' + dbId);
-			
-				});
-			
+function ParticipantViewModel() {
+	var self = this;
+	self.participants = ko.observableArray();
+	self.participants =  ko.observableArray([
+			{ name: "Anthony Yu", hashtag: "#ayu", imagepath: "img/pariveda/ayu.jpg", ratingcount: 390, percent: 64, rating: 3.5},
+			{ name: "Cameron Woodmansee", hashtag: "#cwoodmansee", imagepath: "img/pariveda/cwoodmansee.jpg", ratingcount: 2, percent: 60, rating: 3 },
+			{ name: "Jack Warner", hashtag: "#jwarner", imagepath: "img/pariveda/jwarner.jpg", ratingcount: 21, percent: 40, rating: 2.5 },
+			{ name: "Mina Mistry", hashtag: "#mmistry", imagepath: "img/pariveda/mmistry.jpg", ratingcount: 15, percent: 32, rating: 2 },
+			{ name: "Michael Steinberg", hashtag: "#msteinberg", imagepath: "img/pariveda/msteinberg.jpg", ratingcount: 5, percent: 7, rating: 1 }
+			]);
+}
+			var dbId = getUrlVars()['id'];
+});
 		</script>
 	</head>
 	<body>
