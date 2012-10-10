@@ -1,2 +1,2 @@
 $ ->
-  $('#range').daterangepicker()
+  $('#event_date_range').daterangepicker()

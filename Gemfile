@@ -4,8 +4,10 @@ gem 'rails', '3.2.8'
 
 gem 'pg'
 
-group :test, :development do
-  gem 'rspec-rails'
+gem 'rspec-rails', group: [:test, :development]
+group :test do
+  gem 'factory_girl_rails'
+  gem 'guard-rspec'
 end
 
 group :assets do
