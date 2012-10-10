@@ -1,0 +1,33 @@
+<% if @events.empty? %>
+  <p>No Upcoming Evnets.</p>
+<% else %>
+<table class="table table-striped">
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Lodation</th>
+    <th>Actions</th>
+  </tr>
+</thead>
+<tbody>
+  <% @events.each do |event| %>
+    <tr>
+        <td><%= event.title %></td>
+        <td><%= event.start_date.to_formatted_s(:short) %></td>
+        <td><%= event.end_date.to_formatted_s(:short) %></td>
+        <td><%= event.location %></td>
+        <td>
+          <%= link_to 'Edit', edit_event_path(event), class: 'btn
+          btn-mini' %>
+          <%= link_to 'Destroy', event_path(event), method: :delete,
+          confirm: 'Are you sure?', class: 'btn btn-mini btn-danger' %>
+        </td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+<% end %>
+
+<%= link_to 'Create Event', new_event_path, class: 'btn btn-primary' %>
