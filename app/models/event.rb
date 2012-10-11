@@ -1,5 +1,9 @@
 class Event < ActiveRecord::Base
 
+  has_many :participants, through: :ratings
+  has_many :ratings
+  accepts_nested_attributes_for :participants
+
   validates_presence_of :title, :location
 
   def date_range

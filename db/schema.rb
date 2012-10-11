@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121005014334) do
+ActiveRecord::Schema.define(:version => 20121010192856) do
 
   create_table "events", :force => true do |t|
     t.string   "title"
@@ -21,5 +21,27 @@ ActiveRecord::Schema.define(:version => 20121005014334) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "participants", :force => true do |t|
+    t.string   "name"
+    t.string   "position"
+    t.string   "hashtag"
+    t.string   "twitter_handle"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "ratings", :force => true do |t|
+    t.integer  "event_id"
+    t.integer  "participant_id"
+    t.integer  "rating_count"
+    t.integer  "total_rating"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "ratings", ["event_id", "participant_id"], :name => "index_ratings_on_event_id_and_participant_id"
+  add_index "ratings", ["event_id"], :name => "index_ratings_on_event_id"
+  add_index "ratings", ["participant_id"], :name => "index_ratings_on_participant_id"
 
 end
