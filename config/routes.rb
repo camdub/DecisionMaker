@@ -3,6 +3,8 @@ Decisionmakr::Application.routes.draw do
     get :participants, on: :member
   end
 
+  match 'tweets/:hashtag' => 'Tweets#user_tweets', as: :user_tweets
+
   root to: 'events#index'
 
   # The priority is based upon order of creation:
