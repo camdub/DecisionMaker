@@ -1,0 +1,9 @@
+development:
+  uri: <%= MONGODB_DEV_URI %>
+
+test:
+  uri: <%= MONGODB_DEV_URI %>
+
+# set these environment variables on your prod server
+production:
+  uri: <%= MONGODB_URI %>

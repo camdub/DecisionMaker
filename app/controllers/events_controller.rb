@@ -11,9 +11,9 @@ class EventsController < ApplicationController
   def participants
     @participants = Participant.includes(:ratings).where('ratings.event_id' => params[:id])
     @participants.each do |s|
-      s.set_rating(s.ratings.first.rating_count, s.ratings.first.total_rating)
+      s.calculate_ratings(s.ratings.first)
     end
-    render json: @participants, each_serializer: ParticipantSerializer
+    render json: @participants, each_serializer: ParticipantSerializer, root: "participants"
   end
 
   def show

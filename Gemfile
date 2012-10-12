@@ -22,6 +22,7 @@ gem 'jquery-rails'
 gem 'strong_parameters'
 gem 'simple_form'
 gem 'active_model_serializers', git: 'git://github.com/josevalim/active_model_serializers.git'
+gem 'mongo_mapper'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
