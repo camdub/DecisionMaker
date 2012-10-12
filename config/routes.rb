@@ -1,5 +1,7 @@
 Decisionmakr::Application.routes.draw do
-  resources :events
+  resources :events do
+    get :participants, on: :member
+  end
 
   root to: 'events#index'
 

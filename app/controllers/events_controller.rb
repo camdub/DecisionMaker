@@ -1,10 +1,19 @@
 class EventsController < ApplicationController
 
-  respond_to :html, :json
+ # respond_to :html
+#  respond_to :json, only: [:index, :participants]
 
   def index
     @events = Event.all
-    respond_with(@events)
+    render json: @events
+  end
+
+  def participants
+    @participants = Participant.includes(:ratings).where('ratings.event_id' => params[:id])
+    @participants.each do |s|
+      s.set_rating(s.ratings.first.rating_count, s.ratings.first.total_rating)
+    end
+    render json: @participants, each_serializer: ParticipantSerializer
   end
 
   def show
