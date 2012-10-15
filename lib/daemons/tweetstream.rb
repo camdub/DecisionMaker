@@ -14,10 +14,12 @@ end
 
 while($running) do
 
-  TweetStream::Daemon.new.track('dmkr') do |status|
-    # The status object is a special Hash with
-    # method access to its keys.
-    Rails.logger.debug "new tweets!"
+  TweetStream::Client.new.on_reconnect do |timeout, retries|
+    Rails.logger.debug "timeout: #{timeout} retries: #{retries}"
+  end.on_error do |msg|
+    Rails.logger.debug "error"
+  end.track('dmkr') do |status|
+    TweetProcessor.new(status).process
     Rails.logger.debug "#{status.text}"
   end
 
