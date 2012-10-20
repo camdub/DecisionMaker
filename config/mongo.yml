@@ -4,7 +4,6 @@ development:
   database: "decisionmakr_devtest"
   username: decisionmakr
   password: devtest
-  uri: <%= ENV['MONGODB_DEV_URI'] %>
 
 test:
   host: "alex.mongohq.com"
@@ -12,7 +11,6 @@ test:
   database: "decisionmakr_devtest"
   username: decisionmakr
   password: devtest
-  uri: <%= ENV['MONGODB_DEV_URI'] %>
 
 # set these environment variables on your prod server
 production:
