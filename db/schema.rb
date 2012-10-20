@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121016211942) do
+ActiveRecord::Schema.define(:version => 20121020191939) do
 
   create_table "events", :force => true do |t|
     t.string   "title"
@@ -35,14 +35,22 @@ ActiveRecord::Schema.define(:version => 20121016211942) do
   create_table "ratings", :force => true do |t|
     t.integer  "event_id"
     t.integer  "participant_id"
-    t.integer  "rating_count"
-    t.integer  "total_rating"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.integer  "rating_count",   :default => 0
+    t.integer  "total_rating",   :default => 0
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   add_index "ratings", ["event_id", "participant_id"], :name => "index_ratings_on_event_id_and_participant_id"
   add_index "ratings", ["event_id"], :name => "index_ratings_on_event_id"
   add_index "ratings", ["participant_id"], :name => "index_ratings_on_participant_id"
+
+  create_table "users", :force => true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end

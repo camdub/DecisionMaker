@@ -7,5 +7,11 @@ vendor/**
 .rspec
 db/development.sqlite3
 log/**
+.idea/**
 tmp
+*.iml
 .rbenv-version
+
+config/database.yml
+
+config/database.yml

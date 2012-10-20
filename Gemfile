@@ -2,7 +2,11 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
 
-gem 'pg'
+gem 'sqlite3'
+
+group :production do
+  gem 'pg'
+end
 
 gem 'rspec-rails', group: [:test, :development]
 group :test do
@@ -28,6 +32,7 @@ gem 'bson_ext'
 gem 'daemons-rails'
 gem 'tweetstream'
 gem 'twitter-text'
+gem 'omniauth-twitter' # so users can log in with twitter
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

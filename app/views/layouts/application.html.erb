@@ -11,6 +11,12 @@
   <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
+
+        <% if current_user %>
+            Signed is as <%= current_user.name %>!
+        <% else %>
+            <%= link_to "Sign in with Twitter", "/auth/twitter" %>
+        <% end %>
         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
