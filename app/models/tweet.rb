@@ -3,7 +3,8 @@ class Tweet
 
   key :feedback, String
   key :rating, Integer
-  key :hashtag, String
+  key :event_hashtag, String
+  key :participant_hashtag, String
   key :user_handle, String
   key :user_display, String
   key :timestamp, Date

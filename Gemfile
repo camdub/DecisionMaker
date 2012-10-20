@@ -8,6 +8,7 @@ gem 'rspec-rails', group: [:test, :development]
 group :test do
   gem 'factory_girl_rails'
   gem 'guard-rspec'
+  gem 'database_cleaner'
 end
 
 group :assets do
@@ -26,6 +27,7 @@ gem 'mongo_mapper'
 gem 'bson_ext'
 gem 'daemons-rails'
 gem 'tweetstream'
+gem 'twitter-text'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

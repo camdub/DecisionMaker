@@ -7,20 +7,29 @@ root = File.expand_path(File.dirname(__FILE__))
 root = File.dirname(root) until File.exists?(File.join(root, 'config'))
 require File.join(root, "config", "environment")
 
-$running = true
-Signal.trap("TERM") do
-  $running = false
-end
 
-while($running) do
+TweetStream::Daemon.new('tracker', log_output: true, multiple: true).track('dmkr') do |status|
+  p "got new tweet"
+  include Twitter::Extractor
+  require File.join(root, "config", "environment")
+  ActiveRecord::Base.logger = ActiveSupport::BufferedLogger.new('/Users/camdub/Code/decisionmakr/decisionmakr/tracker.output')
 
-  TweetStream::Client.new.on_reconnect do |timeout, retries|
-    Rails.logger.debug "timeout: #{timeout} retries: #{retries}"
-  end.on_error do |msg|
-    Rails.logger.debug "error"
-  end.track('dmkr') do |status|
-    TweetProcessor.new(status).process
-    Rails.logger.debug "#{status.text}"
+  # get the rating and the hashtags
+  rating = TweetProcessor.parse_rating(status.text)
+  hashtags = extract_hashtags(status.text).delete_if { |x| x == "dmkr" }
+
+  begin
+    if rating && !hashtags.empty?
+      ActiveRecord::Base.connection.reconnect!
+
+      found_hashes = TweetProcessor.update_rating(rating, hashtags)
+
+      p found_hashes
+      unless found_hashes.empty?
+        TweetProcessor.add_tweet(status, found_hashes)
+      end
+    end
+  rescue => e
+    p e.message
   end
-
 end

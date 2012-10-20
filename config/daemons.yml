@@ -1,6 +1,6 @@
 dir_mode: script
 dir: ../../log
-multiple: false
+multiple: true
 backtrace: true
 monitor: true
 ontop: false
