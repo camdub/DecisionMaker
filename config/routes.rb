@@ -4,7 +4,7 @@ Decisionmakr::Application.routes.draw do
   end
 
   match 'tweets/:hashtag' => 'Tweets#user_tweets', as: :user_tweets
-  match 'tweet' => 'Tweets#send_tweet'
+  post 'tweet' => 'Tweets#send_tweet', as: 'send_tweet'
 
   root to: 'events#index'
 
