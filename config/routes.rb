@@ -8,6 +8,7 @@ Decisionmakr::Application.routes.draw do
   root to: 'events#index'
 
   match 'auth/:provider/callback', to: 'sessions#create'
+  match 'auth/failure', to: redirect('/') # if user denies access to his/her Twitter account, go to this URL
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
