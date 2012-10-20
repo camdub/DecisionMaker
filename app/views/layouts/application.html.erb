@@ -14,6 +14,7 @@
 
         <% if current_user %>
             Signed is as <%= current_user.name %>!
+            <%= link_to "Sign out", signout_path %>
         <% else %>
             <%= link_to "Sign in with Twitter", "/auth/twitter" %>
         <% end %>

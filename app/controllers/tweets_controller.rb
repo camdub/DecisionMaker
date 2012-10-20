@@ -5,4 +5,8 @@ class TweetsController < ApplicationController
     render json: @tweets
   end
 
+  def send_tweet
+
+  end
+
 end

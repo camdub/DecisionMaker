@@ -4,11 +4,13 @@ Decisionmakr::Application.routes.draw do
   end
 
   match 'tweets/:hashtag' => 'Tweets#user_tweets', as: :user_tweets
+  match 'tweet' => 'Tweets#send_tweet'
 
   root to: 'events#index'
 
   match 'auth/:provider/callback', to: 'sessions#create'
   match 'auth/failure', to: redirect('/') # if user denies access to his/her Twitter account, go to this URL
+  match 'signout', to: 'sessions#destroy', as: 'signout'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
