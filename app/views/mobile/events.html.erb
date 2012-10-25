@@ -1,0 +1,18 @@
+<% content_for :title do %>
+  Event List
+<% end %>
+
+<div data-role="content">	
+  <ul class="participant-list" data-role="listview" data-bind="foreach: participants">
+    <% @events.each do |event| %>
+      <li class="participant">
+      <%= link_to leaderboard_path(event) do %>
+        <%= image_tag 'nopic_event.jpg' %>
+        <%= content_tag :h1, event.title %>
+        <%= content_tag :p, "#{event.start_date.stamp('October 12')} - #{event.end_date.stamp("%e, 2012")}" %>
+        <%= content_tag :p, event.location %>
+      <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>

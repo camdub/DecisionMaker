@@ -1,0 +1,51 @@
+<% content_for :title do %>
+  Feedback
+<% end %>
+
+<div class="header ui-bar-a">
+  <%= image_tag 'nopic.jpg' %>
+  <div class='participant-info'>
+    <h1><%= @participant.name %></h1>
+    <p>Organization?</p>
+    <p class="hashtag-wrap">
+    <span id="event_hashtag" class="event_hashtag">#<%= @event.hashtag %></span>
+      <span id="user_hashtag" class="user_hashtag">#<%= @participant.hashtag %></span>
+      <span class="percentage-vote">avg rating</span>
+    </p>
+    <p>
+    <span class='ratint-count'><%= @participant.ratings.first.rating_count %> reviews</span>
+    <span class='percentage-vote'><%= draw_stars(@participant.rating_num) %></span>
+    </p>
+  </div>
+</div>
+
+<div class='tweet-bar ui-bar-c'>
+  <%= image_tag 'bigstar_active.png', class: 'rate-logo' %>
+  <span>rate participant</span>
+</div>
+
+<div class='content' data-role="content">
+  <%= form_tag('/tweet') do -%>
+    <%= hidden_field_tag 'rating' %>
+    <div class='feedback-stars'>
+      <a href='#' id="1"><%= image_tag 'bigstar_inactive.png', class: 'star' %></a>
+      <a href='#' id="2"><%= image_tag 'bigstar_inactive.png', class: 'star' %></a>
+      <a href='#' id="3"><%= image_tag 'bigstar_inactive.png', class: 'star' %></a>
+      <a href='#' id="4"><%= image_tag 'bigstar_inactive.png', class: 'star' %></a>
+      <a href='#' id="5"><%= image_tag 'bigstar_inactive.png', class: 'star' %></a>
+    </div>
+
+    <div class='feedback-wrap' data-role="fieldcontains">
+      <%= label_tag 'feedback' do %>
+        <span class='label'>Write your review</span>
+        <span class='charlimit'>
+          <span id='charcount'>0</span> /
+          <span><%= max_tweet_length %></span>
+        </span>
+      <% end %>
+      <%= text_area_tag 'feedback', '', maxlength: max_tweet_length %>
+      <%= hidden_field_tag 'tweet' %>
+      <%= submit_tag 'Submit' %>
+    </div>
+  <% end %>
+</div>

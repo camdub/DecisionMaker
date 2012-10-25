@@ -1,0 +1,33 @@
+$ ->
+
+  $(':submit').click ->
+    tweetString = "";
+    enteredText = $('#feedback').val()
+    starsSelected = $('#rating').val()
+    decisionMakrTag = "#dmkr";
+    eventTag = $('#event_hashtag').html()
+    userTag = $('#user_hashtag').html()
+
+    $('#tweet').val("#{enteredText} #{starsSelected}star #{decisionMakrTag} #{eventTag} #{userTag}")
+
+  $('#feedback').keyup ->
+    enteredText = $(this).val()
+    $('#charcount').text(enteredText.length + enteredText.replace(/[^\n]/g, '').length);
+
+  $('.feedback-stars a').live 'click', ->
+    selected = $(this)
+    id = selected.attr('id')
+    selected.children().attr('src', '/assets/bigstar_active.png')
+
+    console.log selected.siblings()
+    selected.siblings().each (index, elem) ->
+      children = $(elem).children()
+      if(index+1 < id)
+        children.attr('src', '/assets/bigstar_active.png')
+      else
+        children.attr('src', '/assets/bigstar_inactive.png')
+
+    $('#rating').val(id)
+  
+
+    return

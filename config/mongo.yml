@@ -5,7 +5,7 @@ development:
   username: decisionmakr
   password: devtest
 
-test:
+production:
   host: "alex.mongohq.com"
   port: 10042
   database: "decisionmakr_devtest"
@@ -13,5 +13,5 @@ test:
   password: devtest
 
 # set these environment variables on your prod server
-production:
-  uri: <%= ENV['MONGODB_URI'] %>
+#production:
+  #uri: <%= ENV['MONGODB_URI'] %>

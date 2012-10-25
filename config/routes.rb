@@ -3,6 +3,11 @@ Decisionmakr::Application.routes.draw do
     get :participants, on: :member
   end
 
+  get '/leaderboard/:id/participant/:pid' => 'mobile#detail', as: :detail
+  get '/eventlist' => 'mobile#events', as: 'eventlist'
+  get '/leaderboard/:id' => 'mobile#leaderboard', as: :leaderboard
+  get '/leaderboard/:id/participant/:pid/feedback' => 'mobile#feedback', as: :feedback
+
   match 'tweets/:hashtag' => 'Tweets#user_tweets', as: :user_tweets
   post 'tweet' => 'Tweets#send_tweet', as: 'send_tweet'
 

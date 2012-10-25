@@ -35,10 +35,10 @@ ActiveRecord::Schema.define(:version => 20121020202258) do
   create_table "ratings", :force => true do |t|
     t.integer  "event_id"
     t.integer  "participant_id"
-    t.integer  "rating_count",   :default => 0
-    t.integer  "total_rating",   :default => 0
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.integer  "rating_count"
+    t.integer  "total_rating"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   add_index "ratings", ["event_id", "participant_id"], :name => "index_ratings_on_event_id_and_participant_id"

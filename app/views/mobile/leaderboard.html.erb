@@ -1,0 +1,23 @@
+<% content_for :title do %>
+  Leaderboard
+<% end %>
+
+<div data-role="content">	
+  <ul class="participant-list" data-role="listview">
+    <% @participants.each do |participant| %>
+      <li class="participant">
+
+        <%= link_to detail_path(@event, participant) do %>
+          <%= image_tag('nopic.jpg') %>
+          <h1><%= participant.name %></h1>
+          <span class="rating-count"><%= participant.ratings.first.total_rating%> reviews</span>
+          <span class="percentage-vote"><%= draw_stars(participant.rating_num) %></span>
+        <% end %>
+        <div class="percentage-layer" style="width: <%= participant.rating_perc %>%"></div>
+        <% if current_user %>
+          <%= link_to '', feedback_path(@event.id, participant.id), data: {icon: 'star' } %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>

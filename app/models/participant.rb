@@ -7,12 +7,12 @@ class Participant < ActiveRecord::Base
   attr_accessor :rating_perc
 
   def calculate_ratings(rating)
-    unless rating.total_rating == nil && rating.rating_count == nil
-      self.rating_num = calc_rating(rating.total_rating, rating.rating_count)
-      self.rating_perc = calc_perc(rating.total_rating, rating.rating_count)
-    else
+    if rating.total_rating == 0 && rating.rating_count == 0
       self.rating_num = 0
       self.rating_perc = 0
+    else
+      self.rating_num = calc_rating(rating.total_rating, rating.rating_count)
+      self.rating_perc = calc_perc(rating.total_rating, rating.rating_count)
     end
   end
 

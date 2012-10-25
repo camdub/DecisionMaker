@@ -1,0 +1,50 @@
+<%= content_for :title do %>
+  Feedback
+<% end %>
+<%= content_for :back_path do %>
+  <%= leaderboard_path(@event) %>
+<% end %>
+
+<div class="header ui-bar-a">
+  <%= image_tag 'nopic.jpg' %>
+  <div class='participant-info'>
+    <h1><%= @participant.name %></h1>
+    <p>Organization?</p>
+    <p class="hashtag-wrap">
+      <span id="event_hashtag" class="event_hashtag">#<%= @event.hashtag %></span>
+      <span id="user_hashtag" class="user_hashtag">#<%= @participant.hashtag %></span>
+      <span class="percentage-vote">avg rating</span>
+    </p>
+    <p>
+    <span class='ratint-count'><%= @participant.ratings.first.rating_count %> reviews</span>
+    <span class='percentage-vote'><%= draw_stars(@participant.rating_num) %></span>
+    </p>
+  </div>
+</div>
+
+<div class="tweet-bar ui-bar-c">
+  <%= image_tag 'twitter.png', class: 'twitter-logo' %>
+  <span>recent tweets</span>
+</div>
+
+<div class="content" data-role="content">	
+  <ul class="twitter-list" data-role="listview">
+    <% @tweets.each do |tweet| -%>
+      <li class="participant">
+      <%= image_tag 'nopic.jpg', class: 'twitter-user-image' %>
+
+      <div class="twitter-message-wrap">
+        <div class="twitter-user-info">
+          <%= content_tag :h1, tweet.user_display %>
+          <%= content_tag :span, "@#{tweet.user_handle}", class: 'twitterhandle' %>
+        </div>
+        <%= content_tag :p, tweet.feedback, class: 'twitter-user-message' %>
+        <%= content_tag :span, "#{time_ago_in_words(tweet.timestamp)} ago", class: 'timestamp' %>
+        <%= content_tag :p,  class: 'percentage-vote' do %>
+          <%= draw_stars(tweet.rating) %>
+        <% end %>
+      </div>
+      </li>
+  <% end %>
+  </ul>
+</div>
