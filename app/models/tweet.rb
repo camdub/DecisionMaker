@@ -7,5 +7,5 @@ class Tweet
   key :participant_hashtag, String
   key :user_handle, String
   key :user_display, String
-  key :timestamp, Date
+  key :timestamp, Time
 end

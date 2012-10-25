@@ -24,7 +24,7 @@ class MobileController < ApplicationController
     @event = Event.find(params[:id])
     @participant = Participant.includes(:ratings).where('ratings.event_id' => params[:id]).find(params[:pid])
     @participant.calculate_ratings(@participant.ratings.first)
-    @tweets = Tweet.find_all_by_participant_hashtag @participant.hashtag
+    @tweets = Tweet.sort(:timestamp.desc).find_all_by_participant_hashtag(@participant.hashtag)
   end
 
 end

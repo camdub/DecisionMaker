@@ -1,6 +1,6 @@
 $ ->
 
-  $(':submit').click ->
+  $(':submit').live 'click', ->
     tweetString = "";
     enteredText = $('#feedback').val()
     starsSelected = $('#rating').val()
@@ -10,7 +10,7 @@ $ ->
 
     $('#tweet').val("#{enteredText} #{starsSelected}star #{decisionMakrTag} #{eventTag} #{userTag}")
 
-  $('#feedback').keyup ->
+  $('#feedback').live 'keyup', ->
     enteredText = $(this).val()
     $('#charcount').text(enteredText.length + enteredText.replace(/[^\n]/g, '').length);
 
