@@ -11,7 +11,7 @@ Decisionmakr::Application.routes.draw do
   match 'tweets/:hashtag' => 'Tweets#user_tweets', as: :user_tweets
   post 'tweet' => 'Tweets#send_tweet', as: 'send_tweet'
 
-  root to: 'events#index'
+  root to: 'mobile#events'
 
   match 'auth/:provider/callback', to: 'sessions#create'
   match 'auth/failure', to: redirect('/') # if user denies access to his/her Twitter account, go to this URL
