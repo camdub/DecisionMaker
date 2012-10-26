@@ -13,5 +13,5 @@ production:
   password: devtest
 
 # set these environment variables on your prod server
-#production:
-  #uri: <%= ENV['MONGODB_URI'] %>
+production:
+  uri: <%= ENV['MONGODB_URI'] %>
