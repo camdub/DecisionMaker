@@ -34,10 +34,10 @@ gem 'tweetstream'
 gem 'twitter-text'
 gem 'omniauth-twitter' # so users can log in with twitter
 gem 'stamp'
+gem 'faker'
 
 group :development do
   gem 'quiet_assets', group: :development
-  gem 'faker'
 end
 
 # To use ActiveModel has_secure_password
