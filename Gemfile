@@ -4,6 +4,10 @@ gem 'rails', '3.2.8'
 
 gem 'pg'
 
+group :production do
+  gem 'thin'
+end
+
 gem 'rspec-rails', group: [:test, :development]
 group :test do
   gem 'factory_girl_rails'
