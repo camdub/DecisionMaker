@@ -61,7 +61,7 @@ module Decisionmakr
     # config.active_record.whitelist_attributes = true
     #
 
-    config.assets.precompile += %w( mobile.css, mobile.js )
+    config.assets.precompile += %w( mobile.css mobile.js )
     config.assets.initialize_on_precompile = false
 
     # Enable the asset pipeline
