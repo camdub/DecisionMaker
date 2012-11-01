@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121020202258) do
+ActiveRecord::Schema.define(:version => 20121101215451) do
 
   create_table "events", :force => true do |t|
     t.string   "title"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20121020202258) do
     t.string   "twitter_handle"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.string   "image_name"
   end
 
   create_table "ratings", :force => true do |t|

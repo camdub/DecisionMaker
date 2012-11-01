@@ -8,7 +8,12 @@
       <li class="participant">
 
         <%= link_to detail_path(@event, participant) do %>
-          <%= image_tag('nopic.jpg') %>
+          <% if participant.image_name == '' %>
+            <%= image_tag('nopic.jpg') %>
+          <% else %>
+            <%= image_tag("flags/#{participant.image_name}") %>
+          <% end %>
+
           <h1><%= participant.name %></h1>
           <span class="rating-count"><%= participant.ratings.first.rating_count%> reviews</span>
           <span class="percentage-vote"><%= draw_stars(participant.rating_num) %></span>

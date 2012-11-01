@@ -1,117 +1,132 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-require 'faker'
 
 Event.delete_all
 Participant.delete_all
 Rating.delete_all
 Tweet.delete_all
 
-# EPIC TWEET GEN
-# takes a user hashtag and how many tweets to gen
-# returns the total rating
-def generate_tweets(hashtag, how_many)
-  total_stars = 0
-  how_many.times do
-    stars = rand(5)+1
-    total_stars += stars
-    Tweet.create(
-      user_handle: Faker::Lorem.words(2).join('_'),
-      user_display:  Faker::Name.name,
-      feedback: Faker::Lorem.sentences(2).join << " #{stars}star #doha ##{hashtag} #dmkr",
-      rating: stars,
-      event_hashtag: 'doha',
-      participant_hashtag: "#{hashtag}",
-      timestamp: rand(24.hours).ago
-    )
-  end
-  total_stars
-end
-
 ev = Event.create!( 
-  title: 'Climate Conference', 
+  title: 'Mock Negotiation 2012', 
   start_date: Date.new(2012, 11, 2), 
   end_date: Date.new(2012, 11, 3), 
-  location: 'Doha, Qatar', 
-  hashtag: 'doha'
+  location: 'Yale University', 
+  hashtag: 'yale'
 )
 
-p1 = Participant.create!( 
-  name: 'Cameron Woodmansee', 
-  position: 'Head of Awesome', 
-  hashtag: 'cw', 
-  twitter_handle: 'camwoodmansee'
-)
-p2 = Participant.create!( 
-  name: 'Anthony Yu', 
-  position: 'Has backetball shoes in his trunk', 
-  hashtag: 'ay', 
-  twitter_handle: ''
-)
-p3 = Participant.create!( 
-  name: 'Michael Steinberg', 
-  position: 'Writes bug free code', 
-  hashtag: 'ms', 
-  twitter_handle: ''
-)
-p4 = Participant.create!( 
-  name: 'Jack Warner', 
-  position: 'Tarrytown aficionado', 
-  hashtag: 'jw', 
-  twitter_handle: ''
-)
-p5 = Participant.create!( 
-  name: 'Mina Mistry', 
-  position: 'Mongo Master', 
-  hashtag: 'mm', 
-  twitter_handle: ''
-)
-p6 = Participant.create!( 
-  name: 'Jon Landers', 
-  position: 'Raver', 
-  hashtag: 'jl', 
-  twitter_handle: ''
-)
-
-r1 = Rating.create!(
-  event_id: ev.id, 
-  participant_id: p1.id, 
-  rating_count: 17, 
-  total_rating: generate_tweets(p1.hashtag, 17)
-)
-r2 = Rating.create!(
-  event_id: ev.id, 
-  participant_id: p2.id, 
-  rating_count: 23, 
-  total_rating: generate_tweets(p2.hashtag, 23)
-)
-r3 = Rating.create!(
-  event_id: ev.id, 
-  participant_id: p3.id, 
-  rating_count: 30.0, 
-  total_rating: generate_tweets(p3.hashtag, 30)
-)
-r4 = Rating.create!(
-  event_id: ev.id, 
-  participant_id: p4.id, 
-  rating_count: 8, 
-  total_rating: generate_tweets(p4.hashtag, 8)
-)
-r5 = Rating.create!(
-  event_id: ev.id, 
-  participant_id: p5.id, 
-  rating_count: 10, 
-  total_rating: generate_tweets(p5.hashtag, 10)
-)
-r6 = Rating.create!(
-  event_id: ev.id, 
-  participant_id: p6.id, 
-  rating_count: 0, 
-  total_rating: 0
-)
-
+p0 = Participant.create!(name: 'Sarah Fonseca',position: 'Laos',hashtag: 'sfonseca',image_name: '') 
+Rating.create!(event_id: ev.id,participant_id:p0.id,rating_count: 0,total_rating: 0) 
+p1 = Participant.create!(name: 'Sherry Goldberg',position: 'Egypt',hashtag: 'sgoldberg',image_name: 'egypt.png') 
+Rating.create!(event_id: ev.id,participant_id:p1.id,rating_count: 0,total_rating: 0) 
+p2 = Participant.create!(name: 'Sarah Hogue',position: 'Uganda',hashtag: 'shogue',image_name: '') 
+Rating.create!(event_id: ev.id,participant_id:p2.id,rating_count: 0,total_rating: 0) 
+p3 = Participant.create!(name: 'Ana Maria Lebada',position: 'Haiti',hashtag: 'alebada',image_name: '') 
+Rating.create!(event_id: ev.id,participant_id:p3.id,rating_count: 0,total_rating: 0) 
+p4 = Participant.create!(name: 'Dong Won Lee',position: 'Nepal',hashtag: 'dlee',image_name: 'nepal.png') 
+Rating.create!(event_id: ev.id,participant_id:p4.id,rating_count: 0,total_rating: 0) 
+p5 = Participant.create!(name: 'Selim Lika',position: 'Cambodia',hashtag: 'slika',image_name: '') 
+Rating.create!(event_id: ev.id,participant_id:p5.id,rating_count: 0,total_rating: 0) 
+p6 = Participant.create!(name: 'Charlotte Peyraud',position: 'Yemen',hashtag: 'cpeyraud',image_name: 'yemen.png') 
+Rating.create!(event_id: ev.id,participant_id:p6.id,rating_count: 0,total_rating: 0) 
+p7 = Participant.create!(name: 'Kent Santin',position: 'Madagascar',hashtag: 'ksantin',image_name: 'madagascar.png') 
+Rating.create!(event_id: ev.id,participant_id:p7.id,rating_count: 0,total_rating: 0) 
+p8 = Participant.create!(name: 'Rubaina  Anjum',position: 'Australia',hashtag: 'ranjum',image_name: 'australia.png') 
+Rating.create!(event_id: ev.id,participant_id:p8.id,rating_count: 0,total_rating: 0) 
+p9 = Participant.create!(name: 'Haein  Cho',position: 'United States',hashtag: 'hcho',image_name: 'united_states.png') 
+Rating.create!(event_id: ev.id,participant_id:p9.id,rating_count: 0,total_rating: 0) 
+p10 = Participant.create!(name: 'Adrien  Comte',position: 'Iran',hashtag: 'acomte',image_name: 'iran.png') 
+Rating.create!(event_id: ev.id,participant_id:p10.id,rating_count: 0,total_rating: 0) 
+p11 = Participant.create!(name: 'Adam  Cornelius',position: 'Qatar',hashtag: 'acornelius',image_name: 'qatar.png') 
+Rating.create!(event_id: ev.id,participant_id:p11.id,rating_count: 0,total_rating: 0) 
+p12 = Participant.create!(name: 'Jing  Du',position: 'Qatar',hashtag: 'jdu',image_name: 'qatar.png')
+Rating.create!(event_id: ev.id,participant_id:p12.id,rating_count: 0,total_rating: 0) 
+p13 = Participant.create!(name: 'Anusha  Jagannathan',position: 'Saudi Arabia',hashtag: 'ajagannathan',image_name: 'saudi_arabia.png') 
+Rating.create!(event_id: ev.id,participant_id:p13.id,rating_count: 0,total_rating: 0) 
+p14 = Participant.create!(name: 'Andrew Scott  Joiner',position: 'Qatar',hashtag: 'ajoiner',image_name: 'qatar.png') 
+Rating.create!(event_id: ev.id,participant_id:p14.id,rating_count: 0,total_rating: 0) 
+p15 = Participant.create!(name: 'Avery  Livengood',position: 'United States',hashtag: 'alivengood',image_name: 'united_states.png') 
+Rating.create!(event_id: ev.id,participant_id:p15.id,rating_count: 0,total_rating: 0) 
+p16 = Participant.create!(name: 'Justin Ong',position: 'Angola',hashtag: 'jong',image_name: '') 
+Rating.create!(event_id: ev.id,participant_id:p16.id,rating_count: 0,total_rating: 0) 
+p17 = Participant.create!(name: 'Wenjing  Shi',position: 'United Arab Emirates',hashtag: 'wshi',image_name: 'united_arab_emirates.png') 
+Rating.create!(event_id: ev.id,participant_id:p17.id,rating_count: 0,total_rating: 0) 
+p18 = Participant.create!(name: 'Myeongyeon  Son',position: 'Norway ',hashtag: 'mson',image_name: 'norway.png') 
+Rating.create!(event_id: ev.id,participant_id:p18.id,rating_count: 0,total_rating: 0) 
+p19 = Participant.create!(name: 'Jiayin  Song',position: 'Japan',hashtag: 'jsong',image_name: 'japan.png') 
+Rating.create!(event_id: ev.id,participant_id:p19.id,rating_count: 0,total_rating: 0) 
+p20 = Participant.create!(name: 'Nora Stabert',position: 'Venezuela',hashtag: 'nstabert',image_name: 'venezuela.png') 
+Rating.create!(event_id: ev.id,participant_id:p20.id,rating_count: 0,total_rating: 0) 
+p21 = Participant.create!(name: 'Michelle Yuan',position: 'Canada',hashtag: 'myuan',image_name: 'canada.png') 
+Rating.create!(event_id: ev.id,participant_id:p21.id,rating_count: 0,total_rating: 0) 
+p22 = Participant.create!(name: 'Changchang  Zhou',position: 'Russian Federation',hashtag: 'czhou',image_name: 'russian_federation.png') 
+Rating.create!(event_id: ev.id,participant_id:p22.id,rating_count: 0,total_rating: 0) 
+p23 = Participant.create!(name: 'Erin  Auel',position: 'Mexico',hashtag: 'eauel',image_name: 'mexico.png') 
+Rating.create!(event_id: ev.id,participant_id:p23.id,rating_count: 0,total_rating: 0) 
+p24 = Participant.create!(name: 'Emily Harris',position: 'Republic of Korea',hashtag: 'eharris',image_name: 'korea.png') 
+Rating.create!(event_id: ev.id,participant_id:p24.id,rating_count: 0,total_rating: 0) 
+p25 = Participant.create!(name: 'Laura West',position: 'Switzerland',hashtag: 'lwest',image_name: 'switzerland.png') 
+Rating.create!(event_id: ev.id,participant_id:p25.id,rating_count: 0,total_rating: 0) 
+p26 = Participant.create!(name: 'Liliana Pimentel',position: 'Mongolia',hashtag: 'lpimentel',image_name: 'mongolia.png') 
+Rating.create!(event_id: ev.id,participant_id:p26.id,rating_count: 0,total_rating: 0) 
+p27 = Participant.create!(name: 'Adedana  Ashebir',position: 'Algeria',hashtag: 'aashebir',image_name: '') 
+Rating.create!(event_id: ev.id,participant_id:p27.id,rating_count: 0,total_rating: 0) 
+p28 = Participant.create!(name: 'Jorge Barbosa',position: 'Dominica',hashtag: 'jbarbosa',image_name: 'dominica.png') 
+Rating.create!(event_id: ev.id,participant_id:p28.id,rating_count: 0,total_rating: 0) 
+p29 = Participant.create!(name: 'Reginald Rex Barrer',position: 'Afghanistan',hashtag: 'rbarrer',image_name: '') 
+Rating.create!(event_id: ev.id,participant_id:p29.id,rating_count: 0,total_rating: 0) 
+p30 = Participant.create!(name: 'Onon Bayasgalan',position: 'The Gambia',hashtag: 'obayasgalan',image_name: '') 
+Rating.create!(event_id: ev.id,participant_id:p30.id,rating_count: 0,total_rating: 0) 
+p31 = Participant.create!(name: 'Susanna Berkouwer',position: 'South Africa',hashtag: 'sberkouwer',image_name: 'south_africa.png') 
+Rating.create!(event_id: ev.id,participant_id:p31.id,rating_count: 0,total_rating: 0) 
+p32 = Participant.create!(name: 'Rebecca Buckwalter-Poza',position: 'Indonesia',hashtag: 'rbuckwalterpoza',image_name: 'indonesia.png') 
+Rating.create!(event_id: ev.id,participant_id:p32.id,rating_count: 0,total_rating: 0) 
+p33 = Participant.create!(name: 'Vivienne Caballero',position: 'Belize',hashtag: 'vcaballero',image_name: '') 
+Rating.create!(event_id: ev.id,participant_id:p33.id,rating_count: 0,total_rating: 0) 
+p34 = Participant.create!(name: 'Alana Callagy',position: 'Cyprus',hashtag: 'acallagy',image_name: '') 
+Rating.create!(event_id: ev.id,participant_id:p34.id,rating_count: 0,total_rating: 0) 
+p35 = Participant.create!(name: 'Mathew Dagan',position: 'Germany',hashtag: 'mdagan',image_name: 'germany.png') 
+Rating.create!(event_id: ev.id,participant_id:p35.id,rating_count: 0,total_rating: 0) 
+p36 = Participant.create!(name: 'Liliana Davila',position: 'Cuba',hashtag: 'ldavila',image_name: 'cuba.png') 
+Rating.create!(event_id: ev.id,participant_id:p36.id,rating_count: 0,total_rating: 0) 
+p37 = Participant.create!(name: 'David Emmerman',position: 'Ecuador',hashtag: 'demmerman',image_name: 'ecuador.png') 
+Rating.create!(event_id: ev.id,participant_id:p37.id,rating_count: 0,total_rating: 0) 
+p38 = Participant.create!(name: 'Benjamin Goldfarb',position: 'India',hashtag: 'bgoldfarb',image_name: 'india.png') 
+Rating.create!(event_id: ev.id,participant_id:p38.id,rating_count: 0,total_rating: 0) 
+p39 = Participant.create!(name: 'Laura Graham',position: 'Nicaragua',hashtag: 'lgraham',image_name: 'nicaragua.png') 
+Rating.create!(event_id: ev.id,participant_id:p39.id,rating_count: 0,total_rating: 0) 
+p40 = Participant.create!(name: 'Rick Herron',position: 'Kenya ',hashtag: 'rherron',image_name: 'kenya.png') 
+Rating.create!(event_id: ev.id,participant_id:p40.id,rating_count: 0,total_rating: 0) 
+p41 = Participant.create!(name: 'Bunyod Holmatov',position: 'Spain',hashtag: 'bholmatov',image_name: 'spain.png') 
+Rating.create!(event_id: ev.id,participant_id:p41.id,rating_count: 0,total_rating: 0) 
+p42 = Participant.create!(name: 'Laura Johnson',position: 'China',hashtag: 'ljohnson',image_name: 'china.png') 
+Rating.create!(event_id: ev.id,participant_id:p42.id,rating_count: 0,total_rating: 0) 
+p43 = Participant.create!(name: 'Marissa Knodel',position: 'Bolivia',hashtag: 'mknodel',image_name: 'bolivia.png') 
+Rating.create!(event_id: ev.id,participant_id:p43.id,rating_count: 0,total_rating: 0) 
+p44 = Participant.create!(name: 'Fan Li',position: 'Tuvalu',hashtag: 'fli',image_name: '') 
+Rating.create!(event_id: ev.id,participant_id:p44.id,rating_count: 0,total_rating: 0) 
+p45 = Participant.create!(name: 'Omar Malik',position: 'Maldives',hashtag: 'omalik',image_name: '') 
+Rating.create!(event_id: ev.id,participant_id:p45.id,rating_count: 0,total_rating: 0) 
+p46 = Participant.create!(name: 'Aparna Mani',position: 'Greece',hashtag: 'amani',image_name: 'greece.png') 
+Rating.create!(event_id: ev.id,participant_id:p46.id,rating_count: 0,total_rating: 0) 
+p47 = Participant.create!(name: 'Jose Medinamora',position: 'Papua New Guinea',hashtag: 'jmedinamora',image_name: '') 
+Rating.create!(event_id: ev.id,participant_id:p47.id,rating_count: 0,total_rating: 0) 
+p48 = Participant.create!(name: 'William Miao',position: 'Solomon Islands',hashtag: 'wmiao',image_name: '') 
+Rating.create!(event_id: ev.id,participant_id:p48.id,rating_count: 0,total_rating: 0) 
+p49 = Participant.create!(name: 'Eli Mitchell-Larson',position: 'China',hashtag: 'emitchelllarson',image_name: 'china.png') 
+Rating.create!(event_id: ev.id,participant_id:p49.id,rating_count: 0,total_rating: 0) 
+p50 = Participant.create!(name: 'Lia Nicholson',position: 'Liberia',hashtag: 'lnicholson',image_name: 'liberia.png') 
+Rating.create!(event_id: ev.id,participant_id:p50.id,rating_count: 0,total_rating: 0) 
+p51 = Participant.create!(name: 'Rebeka Ryvola',position: 'Brazil',hashtag: 'rryvola',image_name: 'brazil.png') 
+Rating.create!(event_id: ev.id,participant_id:p51.id,rating_count: 0,total_rating: 0) 
+p52 = Participant.create!(name: 'Dustin Schinn',position: 'India',hashtag: 'dschinn',image_name: 'india.png') 
+Rating.create!(event_id: ev.id,participant_id:p52.id,rating_count: 0,total_rating: 0) 
+p53 = Participant.create!(name: 'Andrey Semenov',position: 'Italy',hashtag: 'asemenov',image_name: 'italy.png') 
+Rating.create!(event_id: ev.id,participant_id:p53.id,rating_count: 0,total_rating: 0) 
+p54 = Participant.create!(name: 'Lizzie Shan',position: 'Nauru',hashtag: 'lshan',image_name: '') 
+Rating.create!(event_id: ev.id,participant_id:p54.id,rating_count: 0,total_rating: 0) 
+p55 = Participant.create!(name: 'Lucas Tyree',position: 'United Kingdom',hashtag: 'ltyree',image_name: 'united_kingdom.png') 
+Rating.create!(event_id: ev.id,participant_id:p55.id,rating_count: 0,total_rating: 0) 
+p56 = Participant.create!(name: 'Alexander Vernoit',position: 'China',hashtag: 'avernoit',image_name: 'china.png') 
+Rating.create!(event_id: ev.id,participant_id:p56.id,rating_count: 0,total_rating: 0) 
+p57 = Participant.create!(name: 'Kathryn Wright',position: 'India',hashtag: 'kwright',image_name: 'india.png') 
+Rating.create!(event_id: ev.id,participant_id:p57.id,rating_count: 0,total_rating: 0) 
+p58 = Participant.create!(name: 'Xiang Zhang',position: 'Somalia',hashtag: 'xzhang',image_name: 'somalia.png') 
+Rating.create!(event_id: ev.id,participant_id:p58.id,rating_count: 0,total_rating: 0) 
