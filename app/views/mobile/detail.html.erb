@@ -14,6 +14,7 @@
   <div class='participant-info'>
     <h1><%= @participant.name %></h1>
     <p><%= @participant.position %></p>
+      <%= link_to 'rate participant', feedback_path(@event.id, @participant.id), id: 'feedback_button', data: { icon: 'star', role: 'button', mini: 'true' } %>
     <p class="hashtag-wrap">
       <span id="event_hashtag" class="event_hashtag">#<%= @event.hashtag %></span>
       <span id="user_hashtag" class="user_hashtag">#<%= @participant.hashtag %></span>
