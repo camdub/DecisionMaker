@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
   validates_presence_of :title, :location
 
   def date_range
-    "#{start_date.strftime('%Y/%m/%d')} - #{end_date.strftime('%Y/%m/%d}')}" if (start_date && end_date)
+    "#{start_date.strftime('%m/%d/%Y')} - #{end_date.strftime('%m/%d/%Y')}" if (start_date && end_date)
   end
 
   def date_range=(daterange)
