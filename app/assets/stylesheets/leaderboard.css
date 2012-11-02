@@ -1,3 +1,16 @@
+.participant-list .participant .participant-actions {
+  display: none;
+}
+.participant-list .participant .participant-actions .ui-controlgroup-controls{
+  margin-left: 10px;
+}
+.participant-actions .ui-btn-inner {
+  padding-right: 10px;
+}
+
+.selected {
+  background-color: #777;
+}
 .header {
 	padding-top: 10px;
 }

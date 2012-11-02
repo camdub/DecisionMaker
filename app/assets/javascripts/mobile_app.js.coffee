@@ -2,6 +2,19 @@ jQuery.easing.def = "easeOutBounce"
 
 $ ->
 
+  $('.participant-list .participant').live 'click', ->
+    $('.participant-actions').slideUp()
+    $('.participant-list .participant').children().removeClass('selected')
+
+    # hack for now
+    menubar = $(@).find('.participant-actions')
+    if menubar.is(':visible')
+      menubar.slideUp()
+    else 
+      menubar.slideDown()
+      $(this).children().addClass('selected')
+      
+
   $('.percentage-layer').each ->
     $(@).animate
       width: $(@).data 'width'

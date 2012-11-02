@@ -6,7 +6,11 @@
 <% end %>
 
 <div class="header ui-bar-a">
-  <%= image_tag 'nopic.jpg' %>
+  <% if @participant.image_name == '' %>
+    <%= image_tag('nopic.jpg') %>
+  <% else %>
+    <%= image_tag("flags/#{@participant.image_name}") %>
+  <% end %>
   <div class='participant-info'>
     <h1><%= @participant.name %></h1>
     <p><%= @participant.position %></p>
