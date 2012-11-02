@@ -54,7 +54,7 @@ p22 = Participant.create!(name: '',position: 'Russian Federation',hashtag: 'russ
 Rating.create!(event_id: ev.id,participant_id:p22.id,rating_count: 0,total_rating: 0) 
 p23 = Participant.create!(name: '',position: 'Mexico',hashtag: 'mexico',image_name: 'mexico.png') 
 Rating.create!(event_id: ev.id,participant_id:p23.id,rating_count: 0,total_rating: 0) 
-p24 = Participant.create!(name: '',position: 'Republic of Korea',hashtag: 'republic_of_korea',image_name: 'republic_of_korea.png') 
+p24 = Participant.create!(name: '',position: 'Republic of Korea',hashtag: 'republic_of_korea',image_name: 'korea.png') 
 Rating.create!(event_id: ev.id,participant_id:p24.id,rating_count: 0,total_rating: 0) 
 p25 = Participant.create!(name: '',position: 'Switzerland',hashtag: 'switzerland',image_name: 'switzerland.png') 
 Rating.create!(event_id: ev.id,participant_id:p25.id,rating_count: 0,total_rating: 0) 
