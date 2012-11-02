@@ -8,8 +8,11 @@ margin-right: 5px;
 .participant-list .participant .participant-actions {
   display: none;
 }
+.participant-actions {
+	text-align: center;
+}
 .participant-list .participant .participant-actions .ui-controlgroup-controls{
-  margin-left: 10px;
+  /*margin-left: 10px;*/
 }
 .participant-actions .ui-btn-inner {
   padding-right: 10px;
