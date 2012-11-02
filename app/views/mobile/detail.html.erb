@@ -12,7 +12,7 @@
     <%= image_tag("flags/#{@participant.image_name}") %>
   <% end %>
   <div class='participant-info'>
-    <h1><%= @participant.name %></h1>
+    <h1><%= @participant.position %></h1>
     <p><%= @participant.position %></p>
       <%= link_to 'rate', feedback_path(@event.id, @participant.id), id: 'feedback_button', data: { icon: 'star', role: 'button', mini: 'true' } %>
     <p class="hashtag-wrap">

@@ -14,7 +14,7 @@
           <%= image_tag("flags/#{participant.image_name}") %>
         <% end %>
 
-        <h1><%= participant.name %></h1>
+        <h1><%= participant.position %></h1>
         <span class="rating-count"><%= participant.ratings.first.rating_count%> reviews</span>
         <span class="percentage-vote"><%= draw_stars(participant.rating_num) %></span>
         <div class="percentage-layer" style="width: <%= participant.rating_perc %>%"></div>
@@ -22,7 +22,12 @@
         <div class='participant-actions ui-bar-b'>
           <div data-role="controlgroup" data-type="horizontal" data-mini="true">
             <%= link_to 'view feedback', detail_path(@event.id, participant.id), data: { role: 'button', icon: 'grid', inline: 'true' } %>
-            <%= link_to 'rate participant', feedback_path(@event.id, participant.id), data: { role: 'button', icon: 'star', inline: 'true' } %>
+            <% if current_user %>
+              <%= link_to 'rate participant', feedback_path(@event.id, participant.id), data: { role: 'button', icon: 'star', inline: 'true' } %>
+            <% else %>
+              <%= link_to 'login to rate', feedback_path(@event.id, participant.id), class: 'ui-disabled', data: { role: 'button', icon: 'star', inline: 'true' } %>
+            <% end %>
+
           </div>
         </div>
         </li>

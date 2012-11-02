@@ -18,7 +18,7 @@
       <div data-role="header" data-theme="b">
         <h1><%= yield :title %></h1>
         <% if current_user %>
-          <%= link_to 'Logout', signout_path, class:"ui-btn-right", data: { icon: 'delete' } %>
+          <%= link_to 'Logout', signout_path, class:"ui-btn-right", rel: 'external', data: { icon: 'delete' } %>
         <% else %>
           <a href='/auth/twitter' rel="external" data-icon="twitter" class="ui-btn-right">Login</a>
         <% end %>
