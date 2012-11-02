@@ -9,7 +9,7 @@
       <%= link_to leaderboard_path(event) do %>
         <%= image_tag 'nopic_event.jpg' %>
         <%= content_tag :h1, event.title %>
-        <%= content_tag :p, "#{event.start_date.stamp('%B %e')} - #{event.end_date.stamp("%e, 2012")}" %>
+        <%= content_tag :p, "#{event.start_date.stamp('%B %e')} - #{event.end_date.stamp("%e, %Y")}" %>
         <%= content_tag :p, event.location %>
       <% end %>
       </li>
