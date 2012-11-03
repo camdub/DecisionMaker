@@ -16,7 +16,7 @@ module MobileHelper
 =end
 
   def max_tweet_length
-    140 - 13 - 1 - @participant.hashtag.length - @event.hashtag.length
+    140 - 13 - 2 - @participant.hashtag.length - @event.hashtag.length
   end
 
   def draw_stars(count)
