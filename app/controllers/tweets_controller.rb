@@ -15,6 +15,7 @@ class TweetsController < ApplicationController
       participant_hashtag: params['participant'],
       user_handle: current_user.name,
       user_display: current_user.name,
+      twitter_icon: current_user.twittericon,
       timestamp: Time.now
     )
     TweetProcessor.update_rating(

@@ -8,4 +8,5 @@ class Tweet
   key :user_handle, String
   key :user_display, String
   key :timestamp, Time
+  key :twitter_icon, String
 end
