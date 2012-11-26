@@ -11,7 +11,7 @@ class MobileController < ApplicationController
     @participants.each do |s|
       s.calculate_ratings(s.ratings.first)
     end
-    @participants.sort! { |a, b| b.rating_perc <=> a.rating_perc }
+    @participants.sort! { |a, b| (b.rating_perc == a.rating_perc) ? a.position <=> b.position : b.rating_perc <=> a.rating_perc }
   end
 
   def feedback
