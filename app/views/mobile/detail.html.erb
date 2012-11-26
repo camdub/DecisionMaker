@@ -36,7 +36,7 @@
   <ul class="twitter-list" data-role="listview">
     <% @tweets.each do |tweet| -%>
       <li class="participant">
-      <%= image_tag 'nopic.jpg', class: 'twitter-user-image' %>
+      <%= image_tag "#{tweet.twitter_icon}", class: 'twitter-user-image' %>
 
       <div class="twitter-message-wrap">
         <div class="twitter-user-info">
