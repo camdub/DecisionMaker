@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121101215451) do
+ActiveRecord::Schema.define(:version => 20121126022411) do
 
   create_table "events", :force => true do |t|
     t.string   "title"
@@ -36,10 +36,10 @@ ActiveRecord::Schema.define(:version => 20121101215451) do
   create_table "ratings", :force => true do |t|
     t.integer  "event_id"
     t.integer  "participant_id"
-    t.integer  "rating_count"
-    t.integer  "total_rating"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.integer  "rating_count",   :default => 0
+    t.integer  "total_rating",   :default => 0
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   add_index "ratings", ["event_id", "participant_id"], :name => "index_ratings_on_event_id_and_participant_id"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20121101215451) do
     t.string   "oauth_token"
     t.string   "oauth_secret"
     t.string   "is_admin"
+    t.string   "twittericon"
   end
 
 end
