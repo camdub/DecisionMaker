@@ -7,7 +7,7 @@
     <% @events.each do |event| %>
       <li class="participant">
       <%= link_to leaderboard_path(event) do %>
-        <%= image_tag 'nopic_event.jpg' %>
+        <%= image_tag 'doha_event.png' %>
         <%= content_tag :h1, event.title %>
         <%= content_tag :p, "#{event.start_date.stamp('%b %e')} - #{event.end_date.stamp("%b %e, %Y")}" %>
         <%= content_tag :p, event.location %>
