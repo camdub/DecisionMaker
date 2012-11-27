@@ -15,8 +15,9 @@
 
     
 
-    <div data-role="page" data-add-back-btn="true" data-theme="a" id="mainPage">
+    <div data-role="page" data-theme="a" id="mainPage">
       <div data-role="header" data-theme="b">
+        <%= link_to 'Leaderboard', leaderboard_path(5), class:"ui-btn-left", rel: 'external' %>
         <h1><%= yield :title %></h1>
         <% if current_user %>
           <%= link_to 'Logout', signout_path, class:"ui-btn-right", rel: 'external', data: { icon: 'delete' } %>
