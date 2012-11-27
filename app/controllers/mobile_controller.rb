@@ -12,6 +12,7 @@ class MobileController < ApplicationController
       s.calculate_ratings(s.ratings.first)
     end
     @participants.sort! { |a, b| (b.rating_perc == a.rating_perc) ? a.position <=> b.position : b.rating_perc <=> a.rating_perc }
+
   end
 
   def feedback
