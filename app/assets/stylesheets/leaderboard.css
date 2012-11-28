@@ -6,7 +6,7 @@ margin-right: 5px;
 }
 
 .participant-list .participant .participant-actions {
-  display: none;
+  #display: none;
 }
 .participant-actions {
 	text-align: center;
@@ -200,4 +200,9 @@ margin-right: 5px;
 .twitter-list .ui-li-has-thumb {
 	padding: 0;
 	min-height: 80px;
+}
+
+.search {
+    min-height: 10px;
+    height: 10px;
 }
