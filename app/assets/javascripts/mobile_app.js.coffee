@@ -15,6 +15,7 @@ $ ->
       $(this).children().addClass('selected')
       
 
+
   $('.percentage-layer').each ->
     $(@).animate
       width: $(@).data 'width'
