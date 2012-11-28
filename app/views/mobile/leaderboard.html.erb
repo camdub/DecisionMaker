@@ -27,13 +27,13 @@
 
             <div class="percentage-layer" style="width: <%= participant.rating_perc %>%"></div>
 
-            <div class='participant-actions'>
+            <div class='participant-actions ui-bar-b'>
               <div data-role="controlgroup" data-type="horizontal" data-mini="true">
                 <%= link_to 'view feedback', detail_path(@event.id, participant.id), data: {role: 'button', icon: 'grid', inline: 'true'} %>
                 <% if current_user %>
                     <%= link_to 'rate participant', feedback_path(@event.id, participant.id), data: {role: 'button', icon: 'star', inline: 'true'} %>
                 <% else %>
-                    <%= link_to 'login to rate', '/auth/twitter', data: {role: 'button', icon: 'star', inline: 'true'} %>
+                    <%= link_to 'login to rate', feedback_path(@event.id, participant.id), class: 'ui-disabled', data: {role: 'button', icon: 'star', inline: 'true'} %>
                 <% end %>
 
               </div>

@@ -2,18 +2,17 @@ jQuery.easing.def = "easeOutBounce"
 
 $ ->
 
- # performance issues on iPhones older than mine (i.e. not iPhone 5 ;) )
- # $('.participant-list .participant').live 'click', ->
- #   $('.participant-actions').slideUp()
- #   $('.participant-list .participant').children().removeClass('selected')
+  $('.participant-list .participant').live 'click', ->
+    $('.participant-actions').slideUp()
+    $('.participant-list .participant').children().removeClass('selected')
 
     # hack for now
-  #  menubar = $(@).find('.participant-actions')
-  # if menubar.is(':visible')
-  #    menubar.slideUp()
-  #  else
-  #    menubar.slideDown()
-  #    $(this).children().addClass('selected')
+    menubar = $(@).find('.participant-actions')
+    if menubar.is(':visible')
+      menubar.slideUp()
+    else 
+      menubar.slideDown()
+      $(this).children().addClass('selected')
       
 
   $('.percentage-layer').each ->
