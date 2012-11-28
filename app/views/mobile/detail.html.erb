@@ -43,7 +43,6 @@
       <div class="twitter-message-wrap">
         <div class="twitter-user-info">
           <%= content_tag :h1, tweet.user_display %>
-          <%= content_tag :span, "@#{tweet.user_handle}", class: 'twitterhandle' %>
         </div>
         <%= content_tag :p, tweet.feedback, class: 'twitter-user-message' %>
         <%= content_tag :span, "#{time_ago_in_words(tweet.timestamp)} ago", class: 'timestamp' %>
