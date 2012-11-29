@@ -42,6 +42,7 @@ margin-right: 5px;
 .participant-list .participant a, 
 .twitter-list  .participant .twitter-user-info {
 	font-size: 12px;
+
 }
 .participant-info h1,
 .participant-list .participant a h1,
@@ -115,7 +116,8 @@ margin-right: 5px;
 	color: #999;
 }
 .twitter-user-info {
-	margin-top: 5px;
+	margin-top: 0px;
+    margin-bottom: 7px;
 }
 .twitter-user-info h1,
 .twitter-user-info p,
