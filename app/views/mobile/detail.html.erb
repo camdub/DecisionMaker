@@ -33,16 +33,16 @@
   <%= image_tag 'twitter.png', class: 'twitter-logo' %>
   <span>recent tweets</span>
 </div>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
 <div class="content" data-role="content">	
   <ul class="twitter-list" data-role="listview">
     <% @tweets.each do |tweet| -%>
       <li class="participant">
       <%= image_tag "#{tweet.twitter_icon}", class: 'twitter-user-image' %>
-
       <div class="twitter-message-wrap">
         <div class="twitter-user-info">
-          <%= content_tag :h1, tweet.user_display %>
+          <a href="https://twitter.com/<%=tweet.user_display%>" class="twitter-follow-button" data-show-count="true" data-lang="en" data-size="large">Follow @<%=tweet.user_display%></a>
         </div>
         <%= content_tag :p, tweet.feedback, class: 'twitter-user-message' %>
         <%= content_tag :span, "#{time_ago_in_words(tweet.timestamp)} ago", class: 'timestamp' %>
